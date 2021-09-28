@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace CookingRecipes.Data
 {
     /// <summary>Провайдер данных для рецептов.</summary>
-    public class RecipesDataProvider
+    public class RecipesDataProvider : IRecipesDataProvider
     {
         /// <summary>Клиент для загрузки json.</summary>
         private HttpClient _httpClient;
