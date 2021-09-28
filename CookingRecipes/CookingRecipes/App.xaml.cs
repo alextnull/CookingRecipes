@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CookingRecipes.Pages;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
