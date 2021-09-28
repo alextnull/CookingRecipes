@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace CookingRecipes.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class RecipesPage : ContentPage
     {
-        public MainPage()
+        public RecipesPage()
         {
             InitializeComponent();
         }

@@ -11,7 +11,7 @@ namespace CookingRecipes
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new RecipesPage();
         }
 
         protected override void OnStart()
