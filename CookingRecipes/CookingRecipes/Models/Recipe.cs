@@ -18,6 +18,9 @@ namespace CookingRecipes.Models
         /// <summary>Последняя дата обновления.</summary>
         public DateTime LastUpdated { get; set; }
 
+        /// <summary>Описание.</summary>
+        public string Description { get; set; }
+
         /// <summary>Инструкции для приготовления блюда.</summary>
         public string Instructions { get; set; }
 
