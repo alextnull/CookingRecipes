@@ -1,4 +1,6 @@
-﻿using CookingRecipes.Pages;
+﻿using CookingRecipes.Data;
+using CookingRecipes.PageModels;
+using CookingRecipes.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +13,7 @@ namespace CookingRecipes
         {
             InitializeComponent();
 
-            MainPage = new RecipesPage();
+            MainPage = new RecipesPage(new RecipesPageModel(new RecipesDataProvider()));
         }
 
         protected override void OnStart()

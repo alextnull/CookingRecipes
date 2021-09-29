@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CookingRecipes.PageModels;
 using Xamarin.Forms;
 
 namespace CookingRecipes.Pages
 {
     public partial class RecipesPage : ContentPage
     {
-        public RecipesPage()
+        public RecipesPage(RecipesPageModel recipesPageModel)
         {
             InitializeComponent();
+            BindingContext = recipesPageModel;
         }
     }
 }

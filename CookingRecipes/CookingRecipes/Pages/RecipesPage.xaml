@@ -1,6 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CookingRecipes.Pages.RecipesPage">
+             xmlns:models="clr-namespace:CookingRecipes.Models"
+             xmlns:pagemodels="clr-namespace:CookingRecipes.PageModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="CookingRecipes.Pages.RecipesPage"
+             x:DataType="pagemodels:RecipesPageModel">
 
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="14" />
+        </Style>
+
+        <Style x:Key="labelName"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="Margin"
+                    Value="5, 0, 0, 0" />
+        </Style>
+
+        <Style x:Key="labelDescription"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="TextColor"
+                    Value="Gray" />
+            <Setter Property="MaxLines"
+                    Value="2" />
+            <Setter Property="Margin"
+                    Value="5, 0, 0, 0" />
+        </Style>
+
+        <Style x:Key="labelLastUpdated"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="10" />
+            <Setter Property="TextColor"
+                    Value="LightGray" />
+            <Setter Property="Margin"
+                    Value="5, 0, 0, 0" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="WidthRequest"
+                    Value="60" />
+            <Setter Property="Aspect"
+                    Value="AspectFit" />
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="HorizontalOptions"
+                    Value="FillAndExpand" />
+            <Setter Property="FontSize"
+                    Value="14" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <SearchBar Placeholder="Search..."
+                   Text="{Binding SearchText}"
+                   SearchCommand="{Binding LoadRecipesCommandAsync}"
+                   FontSize="14" />
+
+        <StackLayout Orientation="Horizontal"
+                     Padding="8, 0">
+            <Picker Title="Sort Options"
+                    ItemsSource="{Binding SortOptions}"
+                    SelectedItem="{Binding SelectedSortOption}">
+                <Picker.Behaviors>
+                    <xct:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                                Command="{Binding LoadRecipesCommandAsync}" />
+                </Picker.Behaviors>
+            </Picker>
+            
+            <Picker Title="Search Options"
+                    ItemsSource="{Binding SearchOptions}"
+                    SelectedItem="{Binding SelectedSearchOption}" />
+        </StackLayout>
+
+        <ListView ItemsSource="{Binding Recipes}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsLoading}"
+                  RefreshCommand="{Binding LoadRecipesCommandAsync}"
+                  SelectedItem="{Binding SelectedRecipe}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Recipe">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="8">
+                            <Image Source="{Binding Images[0]}" />
+                            <StackLayout>
+                                <Label Text="{Binding Name}"
+                                       Style="{StaticResource labelName}" />
+                                <Label Text="{Binding Description}"
+                                       Style="{StaticResource labelDescription}" />
+                                <Label Text="{Binding LastUpdated}"
+                                       Style="{StaticResource labelLastUpdated}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

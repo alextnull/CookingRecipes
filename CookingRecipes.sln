@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingRecipes.Android", "CookingRecipes\CookingRecipes.Android\CookingRecipes.Android.csproj", "{A6D4B9DB-8D16-4AA6-AD56-3961009BBBD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookingRecipes", "CookingRecipes\CookingRecipes\CookingRecipes.csproj", "{479DA5AA-2F64-48D5-94D7-2AACF2159E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookingRecipes", "CookingRecipes\CookingRecipes\CookingRecipes.csproj", "{479DA5AA-2F64-48D5-94D7-2AACF2159E05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
