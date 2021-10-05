@@ -5,7 +5,8 @@
              xmlns:pagemodels="clr-namespace:CookingRecipes.PageModels"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="CookingRecipes.Pages.RecipesPage"
-             x:DataType="pagemodels:RecipesPageModel">
+             x:DataType="pagemodels:RecipesPageModel"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -66,8 +67,12 @@
     <StackLayout>
         <SearchBar Placeholder="Search..."
                    Text="{Binding SearchText}"
-                   SearchCommand="{Binding LoadRecipesCommandAsync}"
-                   FontSize="14" />
+                   FontSize="14" >
+            <SearchBar.Behaviors>
+                <xct:EventToCommandBehavior EventName="TextChanged"
+                                            Command="{Binding LoadRecipesCommandAsync}" />
+            </SearchBar.Behaviors>
+        </SearchBar>
 
         <StackLayout Orientation="Horizontal"
                      Padding="8, 0">
@@ -91,6 +96,10 @@
                   RefreshCommand="{Binding LoadRecipesCommandAsync}"
                   SelectedItem="{Binding SelectedRecipe}"
                   HasUnevenRows="True">
+            <ListView.Behaviors>
+                <xct:EventToCommandBehavior EventName="ItemSelected"
+                                            Command="{Binding NavigateToRecipeDetailCommandAsync}" />
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Recipe">
                     <ViewCell>
