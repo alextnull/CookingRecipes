@@ -20,7 +20,11 @@ namespace CookingRecipes.Data
         /// <param name="recipes">Список рецептов</param>
         private void ReplaceTagsWithNewLine(List<Recipe> recipes)
         {
-            recipes.ForEach(r => r.Instructions.Replace("<br>", Environment.NewLine));
+            foreach (var recipe in recipes)
+            {
+                var formattedInstructions = recipe.Instructions.Replace("<br>", Environment.NewLine);
+                recipe.Instructions = formattedInstructions;
+            }
         }
 
         /// <summary>Возвращает список рецептов.</summary>
