@@ -95,8 +95,8 @@ namespace CookingRecipes.PageModels
         /// <summary>Выбранный рецепт.</summary>
         public Recipe SelectedRecipe
         {
-            get { return _selectedRecipe; }
-            set { _selectedRecipe = value; }
+            get => _selectedRecipe;
+            set => SetProperty(ref _selectedRecipe, value);
         }
 
         /// <summary>Ищет рецепты.</summary>
