@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pagemodels="clr-namespace:CookingRecipes.PageModels"
+             x:Class="CookingRecipes.Pages.RecipeDetailPage"
+             x:DataType="pagemodels:RecipeDetailPageModel"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="labelName"
+               TargetType="Label">
+            <Setter Property="TextColor"
+                    Value="Black" />
+        </Style>
+
+        <Style x:Key="labelRecipeName"
+               BasedOn="{StaticResource labelName}"
+               TargetType="Label">
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="16" />
+        </Style>
+
+        <Style x:Key="labelSimpleName"
+               BasedOn="{StaticResource labelName}"
+               TargetType="Label">
+            <Setter Property="Padding"
+                    Value="5" />
+        </Style>
+
+        <Style x:Key="labelSimpleDescription"
+               TargetType="Label">
+            <Setter Property="Padding"
+                    Value="10, 0, 0, 0" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <CarouselView ItemsSource="{Binding Recipe.Images}"
+                      HeightRequest="150">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                    <StackLayout>
+                        <Image Source="{Binding .}"
+                               Aspect="AspectFit" />
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <Label Text="{Binding Recipe.Name}"
+               Style="{StaticResource labelRecipeName}" />
+        <Label Text="Description:"
+               Style="{StaticResource labelSimpleName}" />
+
+        <Label Text="{Binding Recipe.Description}"
+               Style="{StaticResource labelSimpleDescription}" />
+        <Label Text="Instructions:"
+               Style="{StaticResource labelSimpleName}" />
+        <Label Text="{Binding Recipe.Instructions}"
+               Style="{StaticResource labelSimpleDescription}" />
+        <Label Padding="5">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Difficulty: "
+                              TextColor="Black" />
+                        <Span Text="{Binding Recipe.Difficulty}" />
+                        <Span Text="/" />
+                        <Span Text="5" />
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>
